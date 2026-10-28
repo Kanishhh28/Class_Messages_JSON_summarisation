@@ -65,8 +65,8 @@ FEWSHOT = [
         {"tasks": []},
     ),
     (
-        "Can someone fetch the extra chairs before the lecture starts? No one assigned yet.",
-        {"tasks": [{"task": "Fetch the extra chairs", "owner": None, "due": "before the lecture starts"}]},
+        "The classroom needs to be arranged before the guests arrive. Anyone available please help.",
+        {"tasks": [{"task": "Arrange the classroom", "owner": None, "due": "before the guests arrive"}]},
     ),
     (
         "Priya, please print the posters before the review. Arjun, book the seminar hall by Monday 10am.",
@@ -96,6 +96,10 @@ REMINDER = (
 NULL_LIKE = {"null", "none", "anyone", "someone", "nobody", "unassigned", "n/a", ""}
 HEADER_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_-]*\s*:")
 TAG_RE = re.compile(r"<\s*/?\s*(message|system|assistant|user)\b[^>]*>", re.IGNORECASE)
+EVENT_TIME_RE = re.compile(
+    r"\bfor the\s+\w+\s+on\s+\d+\s+[A-Za-z]+(?:\s+at\s+\d+\s*(?:am|pm))?",
+    re.IGNORECASE
+)
 
 
 def parse_message(path: Path) -> dict:
@@ -224,6 +228,11 @@ def main():
 
             # "due" must be verbatim; drop it if the model invented it
             if due and due.lower() not in m["body"].lower():
+                due = None
+
+            # Filter out event times misattributed as completion deadlines
+            ev_match = EVENT_TIME_RE.search(m["body"])
+            if ev_match and due and due.lower() in ev_match.group(0).lower():
                 due = None
 
             key = (m["message_id"], task.lower(), (owner or "").lower())

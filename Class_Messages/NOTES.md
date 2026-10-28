@@ -38,15 +38,22 @@
 ---
 
 ### Hallucination
-- **Observed Case:** In `m03` (*"Arjun needs to book seminar hall B for the demo on 18 March at 10am"*), the model initially extracted `"due": "18 March 10am"`, hallucinating the event time as a task completion deadline. In other early tests, the model occasionally invented plausible calendar dates not found in the text.
+- **Observed Case 1 (Event Timestamps):** In `m03` (*"Arjun needs to book seminar hall B for the demo on 18 March at 10am"*), the model initially extracted `"due": "18 March 10am"`, hallucinating the scheduled event time as a task completion deadline. In other early tests, the model occasionally invented plausible calendar dates not found in the text.
+- **Observed Case 2 (Passive Relative Milestones):** In `m12` (*"The lab benches need to be sanitized and wiped down before the next batch arrives. Anyone available please help."*), the model initially defaulted to `"due": null` because prior few-shots lacked an example showing passive phrasing paired with an unassigned relative deadline.
 - **Mitigation:**
   1. Updated the prompt rules: *"The scheduled date/time of an event itself is not a completion deadline."*
-  2. Implemented strict programmatic post-validation:
+  2. Synthesized a structural few-shot example demonstrating an unassigned, passive action with a relative completion condition (*"The classroom needs to be arranged before the guests arrive. Anyone available please help."* $\to$ `"due": "before the guests arrive"`, `"owner": null`).
+  3. Implemented strict programmatic post-validation:
      ```python
+     # Verbatim check: drop deadlines invented by the model
      if due and due.lower() not in m["body"].lower():
          due = None
+
+     # Event timestamp filter: ensure event schedules are not misattributed as deadlines
+     ev_match = EVENT_TIME_RE.search(m["body"])
+     if ev_match and due and due.lower() in ev_match.group(0).lower():
+         due = None
      ```
-     If the deadline string is not present verbatim in the original message body, it is dropped to `null`.
 
 ---
 

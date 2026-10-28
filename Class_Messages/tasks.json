@@ -8,9 +8,9 @@
     },
     {
       "message_id": "m03",
-      "task": "Book seminar hall B",
+      "task": "Book seminar hall B for the demo",
       "owner": "Arjun",
-      "due": "18 March 10am"
+      "due": null
     },
     {
       "message_id": "m04",
@@ -23,6 +23,66 @@
       "task": "Print 20 copies of the poster",
       "owner": null,
       "due": "before the review"
+    },
+    {
+      "message_id": "m07",
+      "task": "Reserve the audio mic",
+      "owner": "Kiran",
+      "due": "4pm today"
+    },
+    {
+      "message_id": "m08",
+      "task": "Submit the team roster",
+      "owner": "Sneha",
+      "due": "Wednesday evening"
+    },
+    {
+      "message_id": "m08",
+      "task": "Compile the budget spreadsheet",
+      "owner": "Aman",
+      "due": "Friday noon"
+    },
+    {
+      "message_id": "m10",
+      "task": "Send the speaker invitation email",
+      "owner": "Ananya",
+      "due": "this Monday 5pm"
+    },
+    {
+      "message_id": "m12",
+      "task": "Sanitize and wipe down the lab benches",
+      "owner": null,
+      "due": "before the next batch arrives"
+    },
+    {
+      "message_id": "m14",
+      "task": "Order the prototype components",
+      "owner": "Siddharth",
+      "due": "tonight"
+    },
+    {
+      "message_id": "m16",
+      "task": "Set up the projector",
+      "owner": "Tanvi",
+      "due": "before 6pm"
+    },
+    {
+      "message_id": "m17",
+      "task": "Review the peer evaluation forms",
+      "owner": "Rohit",
+      "due": "Saturday midnight"
+    },
+    {
+      "message_id": "m17",
+      "task": "Review the peer evaluation forms",
+      "owner": "Simran",
+      "due": "Saturday midnight"
+    },
+    {
+      "message_id": "m18",
+      "task": "Submit your draft",
+      "owner": "Aditya",
+      "due": "5pm today"
     }
   ]
 }
