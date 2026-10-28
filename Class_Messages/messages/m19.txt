@@ -1,0 +1,5 @@
+message_id: m19
+from: Lab Admin
+date: 15 Mar 2024
+
+If it rains tomorrow, we will move the outdoor session indoors. No action required right now unless notified in the morning.
