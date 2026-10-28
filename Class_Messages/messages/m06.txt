@@ -1,0 +1,5 @@
+message_id: m06
+from: Dept Office
+date: 7 Mar 2024
+
+Sharing the department newsletter. No action from the class.

@@ -1,0 +1,5 @@
+message_id: ex01
+from: Class mentor
+date: 1 Mar 2024
+
+Riya, please share the venue list by Tuesday 11am.

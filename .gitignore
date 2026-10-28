@@ -1,0 +1,24 @@
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Model weights (Do not push 2GB GGUF to GitHub)
+models/
+Class_Messages/models/
+*.gguf
+*.bin
+
+# Python byte code & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE configurations
+.vscode/
+.idea/

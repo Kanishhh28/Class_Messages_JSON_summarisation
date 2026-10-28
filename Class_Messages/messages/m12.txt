@@ -1,0 +1,5 @@
+message_id: m12
+from: Lab Instructor
+date: 11 Mar 2024
+
+The lab benches need to be sanitized and wiped down before the next batch arrives. Anyone available please help.

@@ -1,0 +1,6 @@
+message_id: m10
+from: Event Coordinator
+date: 10 Mar 2024
+
+The guest lecture is on 22 April at 3pm in the auditorium. 
+Ananya, please send the speaker invitation email by this Monday 5pm.
